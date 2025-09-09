@@ -1,0 +1,25 @@
+@import url('@fortawesome/fontawesome-free/css/fontawesome.min.css');
+@import url('@fortawesome/fontawesome-free/css/solid.min.css'); /* 按需引入：solid（fas）、regular（far）、brands（fab） */
+
+/* 2. 重写字体路径：指向本地 static/fonts 目录 */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900; /* solid 图标对应 900 权重 */
+  src: url('../fonts/fa-solid-900.woff2') format('woff2');
+       /* url('./static/fonts/fa-solid-900.woff') format('woff'); */
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400; /* brands 图标对应 400 权重 */
+  src: url('../fonts/fa-brands-400.woff2') format('woff2');
+       /* url('./static/fonts/fa-brands-400.woff') format('woff'); */
+  font-display: block;
+}
+
+/* 3. 强制绑定字体与图标类（防止被覆盖） */
+.fas { font-family: 'Font Awesome 6 Free' !important; font-weight: 900 !important; }
+.fab { font-family: 'Font Awesome 6 Brands' !important; font-weight: 400 !important; }

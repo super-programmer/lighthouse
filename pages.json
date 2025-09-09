@@ -1,0 +1,28 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "灯塔"
+			}
+		},
+		{
+			"path": "pages/admission-news/index",
+			"style": {
+				"navigationBarTitleText": "招生动态"
+			}
+		},
+		{
+			"path": "pages/application/index",
+			"style": {
+				"navigationBarTitleText": "志愿填报"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "灯塔",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
