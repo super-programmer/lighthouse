@@ -1,15 +1,27 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "灯塔"
+			}
+		},
+		{
+			"path": "pages/admission-news/index",
+			"style": {
+				"navigationBarTitleText": "招生动态"
+			}
+		},
+		{
+			"path": "pages/application/index",
+			"style": {
+				"navigationBarTitleText": "志愿填报"
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "灯塔",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}
