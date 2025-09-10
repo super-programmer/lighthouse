@@ -1,7 +1,7 @@
 <template>
 	<view class="bg-gray-100 flex flex-col min-h-screen">
 		<!-- 头部导航 -->
-		<top-nav />
+		<top-nav :scroll-top="scrollTop" />
 
 		<!-- 中间内容区 -->
 		<main class="flex-grow container mx-auto px-4 py-6 w-full max-w-4xl">
@@ -71,6 +71,7 @@
 		},
 		data() {
 			return {
+				scrollTop: 0,
 				// 时间线数据
 				timelineEvents: [{
 						title: '高考报名时间',
@@ -106,6 +107,10 @@
 			this.loadData()
 		},
 		methods: {
+			// 页面滚动时更新 scrollTop
+			onPageScroll(res) {
+				this.scrollTop = res.scrollTop;
+			},
 			// 加载数据
 			loadData() {
 				// 实际项目中这里会调用API获取数据
