@@ -37,13 +37,13 @@
 		watch: {
 			scrollTop(newVal) {
 				// 当滚动距离超过导航栏高度时吸顶
-				this.isFixed = this.scrollTop >= this.navHeight;
+				this.isFixed = this.scrollTop >= this.navHeight/2;
 			}
 		},
 		computed: {
 			fixedStyle() {
 				return {
-					top: '0',
+					top:  this.navHeight,
 					left: '0',
 					right: '0',
 					zIndex: '999'
