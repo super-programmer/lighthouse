@@ -6,13 +6,27 @@ module.exports = {
 		'./src/components/**/*.{html,js,jsx,ts,tsx,vue}',
 		'./src/components/*.{html,js,jsx,ts,tsx,vue}'
 	],
-	theme: {
-		extend: {},
-	},
-	plugins: [],
 	corePlugins: {
-		// preflight: true, // 禁用preflight插件，它会处理很多如margin、padding重置等基础样式，禁用它可去除大量基础样式
-		// 还可以根据需要继续禁用其他涉及基础样式生成的核心插件，比如：
-		// container: false, // 禁用和容器相关的基础样式（如果有）
+		// 移除通配符重置样式
+		preflight: false,
+		// 移除小程序不支持的选择器相关插件
+		container: false,
+		space: false,
+	},
+	// 自定义工具类（可选）
+	plugins: [],
+	// 生成兼容小程序的输出格式
+	output: {
+		// 避免生成带 `*` 的选择器
+		minimize: true,
+	},
+	theme: {
+		// 自定义工具类的分隔符（避免使用 /）
+		separator: '-',
+	},
+	// 配置插件避免转义
+	experimental: {
+		// 禁用分数的自动转义
+		escapeHatch: true,
 	},
 }

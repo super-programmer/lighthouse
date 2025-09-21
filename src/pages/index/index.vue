@@ -7,17 +7,14 @@
 		<main class="flex-grow container mx-auto px-4 py-6 w-full max-w-4xl">
 			<!-- 快捷功能六宫格 -->
 			<view class="grid grid-cols-3 gap-4 mb-6">
-				<function-card icon="fas fa-bullhorn" color="text-blue-500" text="招生动态"
+				<function-card icon="solid,bullhorn" color="#3B82F6" text="招生动态"
 					@click="navigateTo('admission-news')" />
-				<function-card icon="fas fa-pencil-alt" color="text-green-500" text="志愿填报"
-					@click="navigateTo('application')" />
-				<function-card icon="fas fa-university" color="text-purple-500" text="院校库"
-					@click="navigateTo('colleges')" />
-				<function-card icon="fas fa-book-open" color="text-amber-500" text="专业库"
-					@click="navigateTo('majors')" />
-				<function-card icon="fas fa-lightbulb" color="text-yellow-500" text="专业解读"
+				<function-card icon="solid,pencilAlt" color="#10B981" text="志愿填报" @click="navigateTo('application')" />
+				<function-card icon="solid,university" color="#8B5CF6" text="院校库" @click="navigateTo('colleges')" />
+				<function-card icon="solid,bookOpen" color="#F59E0B" text="专业库" @click="navigateTo('majors')" />
+				<function-card icon="solid,lightbulb" color="#EAB308" text="专业解读"
 					@click="navigateTo('major-interpretation')" />
-				<function-card icon="fas fa-chart-line" color="text-red-500" text="分数管理"
+				<function-card icon="solid,chartLine" color="#EF4444" text="分数管理"
 					@click="navigateTo('score-management')" />
 			</view>
 
@@ -25,9 +22,12 @@
 			<view class="bg-white p-6 rounded-lg shadow-md mb-6 mt-6">
 				<view class="flex justify-between items-center mb-4">
 					<text class="text-2xl font-bold text-gray-800">高考时间线</text>
-					<text class="text-blue-500 text-sm" @click="navigateTo('timeline-detail')">
-						查看全部 <i class="fas fa-angle-right ml-1"></i>
-					</text>
+					<view class="text-blue-500 text-sm" @click="navigateTo('timeline-detail')">
+						查看全部 <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
+							:computedStyle="{'display': 'inline-block' , 'verticalAlign': $isH5 ? 'bottom' : 'middle'}"
+							color="#3B82F6"
+							:class="['text-xl','ml-2']" />
+					</view>
 				</view>
 
 				<time-line :events="timelineEvents" />
@@ -37,9 +37,12 @@
 			<view class="bg-white p-6 mt-6 rounded-lg shadow-md">
 				<view class="flex justify-between items-center mb-4">
 					<text class="text-2xl font-bold text-gray-800">推荐资讯</text>
-					<text class="text-blue-500 text-sm" @click="navigateTo('news-list')">
-						更多资讯 <i class="fas fa-angle-right ml-1"></i>
-					</text>
+					<view class="text-blue-500 text-sm" @click="navigateTo('news-list')">
+						更多资讯 <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
+							color="#3B82F6"
+							:computedStyle="{'display': 'inline-block' , 'verticalAlign': $isH5 ? 'bottom' : 'middle' }"
+							:class="['text-xl','ml-2']" />
+					</view>
 				</view>
 				<news-card v-for="(item, index) in recommendedNews" :key="index" :title="item.title"
 					:publishTime="item.date" @click="navigateTo('news-detail', {id: item.id})" />
@@ -168,7 +171,7 @@
 	/* 基础样式优化 */
 	page {
 		font-family: 'Inter', sans-serif;
-		background-color: #f3f4f6;
+		background-color: '#f3f4f6';
 	}
 
 	/* 组件间距优化 */

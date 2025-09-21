@@ -1,6 +1,8 @@
 {
-	"pages": [
-		{
+	"usingComponents": {
+	  // "font-awesome-icon": "/components/font-awesome-icon.vue"
+	},
+	"pages": [{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "灯塔"

@@ -13,13 +13,3 @@
 		}
 	});
 </script>
-<style lang="scss">
-	// 先引入外部样式
-	@use "@/uni.scss" as *;
-	@import './static/css/fontawesome-custom.css';
-	@import '../dist/output.css';
-
-</style>
-<style>
-	@import 'styles/tailwind.css'
-</style>

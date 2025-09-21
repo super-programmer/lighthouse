@@ -1,4 +1,7 @@
 {
+	 "usingComponents": {
+	    "font-awesome-icon": "/components/FontAwsomeIcon.vue"
+	  },
 	"pages": [
 		{
 			"path": "pages/index/index",
