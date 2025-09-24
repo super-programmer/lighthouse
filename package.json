@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"replaceTailWind": "npx postcss ./dist/out.css --config postcss.config.js -o ./dist/output.css",
-		"buildTailWindcss": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/out.css --minify",
+		"buildTailWindcss": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/out.css --minify && npm run replaceTailWind",
 		"serve": "npm run dev:h5",
 		"build": "npm run build:h5",
 		"build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
@@ -110,7 +110,6 @@
 		"postcss": "^8.5.6",
 		"postcss-cli": "^11.0.1",
 		"postcss-comment": "^2.0.0",
-		"postcss-replace": "^2.0.1",
 		"postcss-wxss": "^1.0.6",
 		"sass": "^1.92.1",
 		"sass-loader": "^16.0.5",
