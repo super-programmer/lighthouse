@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import FontAwesomeIcon from './components/FontAwsomeIcon.vue'
-import 'uni.scss';
+// import 'uni.scss';
 import '../dist/output.css'
 
 // 检查是否有间接引入的 Font Awesome CSS

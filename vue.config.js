@@ -23,7 +23,7 @@ module.exports = {
 
 		// 配置全局对象为小程序支持的 this
 		// config.output
-			// .globalObject('this');
+		// .globalObject('this');
 		config.optimization.minimizer('terser').use(TerserPlugin, [{
 			terserOptions: {
 				output: {
@@ -84,12 +84,6 @@ module.exports = {
 			.options({
 				sourceMap: process.env.NODE_ENV === 'development'
 			})
-			.end();
-		// 添加字体文件处理规则
-		config.module
-			.rule('fonts')
-			.test(/\.(woff2?|eot|ttf|otf)$/i)
-			.exclude.add(/@fortawesome/) // 排除 Font Awesome 的字体文件
 			.end();
 		if (process.env.NODE_ENV === 'development') {
 			const oneOfs = Array.from(scssRule.oneOfs.store);
