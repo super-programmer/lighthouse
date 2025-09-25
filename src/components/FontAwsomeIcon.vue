@@ -55,12 +55,6 @@
 			}
 		},
 		watch: {
-			isIconLoaded: {
-				immediate: true,
-				handler(value) {
-					console.log('isIconLoaded 变化:', value);
-				}
-			},
 			icon: {
 				immediate: true,
 				handler() {
@@ -70,7 +64,6 @@
 		},
 		computed: {
 			iconPath() {
-				console.log(this.iconData)
 				return this.iconData?.icon?.icon?.[4] || '';
 			},
 			computedClass() {
@@ -99,13 +92,11 @@
 					buffer[i] = svg.charCodeAt(i);
 				}
 				const base64 = wx.arrayBufferToBase64(buffer.buffer);
-				console.log(base64);
 				return `data:image/svg+xml;base64,${base64}`;
 			},
 			loadIcon() {
 				const [prefix, iconName] = this.icon;
 				if (!prefix || !iconName) {
-					console.error('图标参数错误:', this.icon);
 					return;
 				}
 				this.isIconLoaded = false;
@@ -120,13 +111,11 @@
 							this.$set(this.iconData, 'icon', module.definition)
 							// 小程序需要转换为Base64
 							if (this.isWeixin) {
-								console.log(this.svgString, this.iconPath, 'this.svgString');
 								this.svgBase64 = this.svgToBase64(this.svgString);
 							}
 							this.isIconLoaded = true;
 						})
 						.catch(err => {
-							console.error('图标加载失败1:', err);
 							// 尝试备用路径
 							import(`@fortawesome/free-${prefix}-svg-icons/icons/${fullIconName}.js`)
 								.then(module => {
@@ -137,12 +126,10 @@
 									this.isIconLoaded = true;
 								})
 								.catch(err2 => {
-									console.error('图标加载失败:', err2);
 									this.isIconLoaded = true;
 								});
 						});
 				} catch (e) {
-					console.error('加载图标出错:', e);
 					this.isIconLoaded = true;
 				}
 			}
