@@ -1,10 +1,11 @@
 <template>
 	<view class="region-picker">
-		<uni-data-picker  @change="onRegionChange" :localdata="regionData" />
+		<uni-data-picker @change="onRegionChange" :localdata="regionData" mode="region"/>
 	</view>
 </template>
 
 <script>
+	import uniDataPicker from '@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue'
 	// 手动导入原始样式文件
 	import {
 		regionData
@@ -15,6 +16,9 @@
 	} from '@/utils/location'
 
 	export default {
+		components: {
+			uniDataPicker
+		},
 		data() {
 			return {
 				regionData,

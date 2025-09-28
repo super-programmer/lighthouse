@@ -1,7 +1,7 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import Vue from 'vue'
 import App from './App.vue'
-
-import 'uni.scss';
 import '../dist/output.css'
 // 导入并应用组件注册
 import './plugins/index'
