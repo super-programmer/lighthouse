@@ -9,25 +9,23 @@ module.exports = {
 		const isMiniProgram = process.env.UNI_PLATFORM.includes('mp-');
 
 		if (isMiniProgram) {
-			// 为小程序端单独配置 JS 处理规则，确保 babel-loader 生效
-			config.module.rule('js')
-				.test(/\.js$/)
-				.exclude
-				.add(/node_modules/)
-				.end()
+			// 为 uni-mp-loader 手动指定 babel-loader 路径
+			config.module
+				.rule('script')
 				.use('babel-loader')
-				.loader('babel-loader')
+				.loader(require.resolve('babel-loader')) // 强制使用项目安装的 babel-loader
 				.options({
 					presets: [
-						'@dcloudio/vue-cli-plugin-uni/babel', //  uni-app 小程序专用预设
 						['@babel/preset-env', {
 							targets: {
-								browsers: ['last 2 versions', 'iOS >= 9', 'Android >= 4.4']
-							}
+								chrome: '67',
+								ios: '11'
+							}, // 小程序兼容目标
+							useBuiltIns: 'usage',
+							corejs: 3
 						}]
 					]
-				})
-				.end();
+				});
 		}
 		config.resolve.alias.set('path', path.resolve(__dirname, 'src/utils/mock-path.js'));
 		// 强化全局变量模拟，覆盖路径相关变量
@@ -37,7 +35,8 @@ module.exports = {
 				'process.env': JSON.stringify({
 					NODE_ENV: process.env.NODE_ENV || 'development',
 					VUE_APP_DEBUG: process.env.VUE_APP_DEBUG || false,
-					VUE_APP_PLATFORM: process.env.VUE_APP_PLATFORM || 'h5'
+					VUE_APP_PLATFORM: process.env.VUE_APP_PLATFORM || 'h5',
+					UNI_MP_PLUGIN_EXPORT: '{}'
 					// 其他需要的环境变量
 				}),
 				// 确保 process 变量本身被定义（避免直接引用 process 时出错）
@@ -73,9 +72,9 @@ module.exports = {
 
 		// 新建 SCSS 规则
 		const scssRule = config.module.rule('scss')
-			// .test(/\.scss$/)
-			// // .exclude.add(path.resolve(__dirname, 'node_modules'))
-			// .end();
+		// .test(/\.scss$/)
+		// // .exclude.add(path.resolve(__dirname, 'node_modules'))
+		// .end();
 
 		// 处理 Vue 单文件组件中的 SCSS (如 <style lang="scss">)
 		scssRule.oneOf('vue-scss')
@@ -142,11 +141,11 @@ module.exports = {
 	// 单独指定小程序端的 Webpack 配置
 	configureWebpack: (config) => {
 		if (process.env.UNI_PLATFORM.includes('mp-')) {
-			config.module.rules.push({
-				test: /\.js$/,
-				use: 'babel-loader',
-				exclude: /node_modules/
-			});
+			// config.module.rules.push({
+			// 	test: /\.js$/,
+			// 	use: 'babel-loader',
+			// 	exclude: /node_modules/
+			// });
 		}
 	}
 };

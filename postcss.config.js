@@ -1,6 +1,3 @@
-// 全局日志：确认配置文件已加载
-console.log('===== PostCSS 配置文件已执行 =====');
-
 module.exports = {
   plugins: [
     (root) => {
