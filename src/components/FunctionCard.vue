@@ -1,13 +1,19 @@
 <template>
 	<view class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition-shadow"
 		@click="$emit('click')">
-		<font-awesome-icon :class="[color,'text-xl','mb-2']" :icon="iconArr" :size="36" :color="color" />
+		<slot>
+			<font-awesome-icon :class="[color,'text-xl','mb-2']" :icon="iconArr" :size="36" :color="color" />
+		</slot>
 		<text class="text-gray-600">{{ text }}</text>
 	</view>
 </template>
 
 <script>
+	import FontAwesomeIcon from './FontAwesomeIcon.vue';
 	export default {
+		components: {
+			FontAwesomeIcon
+		},
 		props: {
 			icon: {
 				type: String,
@@ -26,8 +32,9 @@
 			}
 		},
 		emits: ['click'],
-		computed:{
-			iconArr(){
+		computed: {
+			iconArr() {
+				console.log(this.icon.split(','));
 				return this.icon.split(',')
 			}
 		}

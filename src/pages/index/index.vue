@@ -4,7 +4,7 @@
 		<top-nav :scroll-top="scrollTop" />
 
 		<!-- 中间内容区 -->
-		<main class="flex-grow container mx-auto px-4 py-6 w-full max-w-4xl">
+		<main class="flex-grow container mx-auto px-4 py-6 max-w-4xl">
 			<!-- 快捷功能六宫格 -->
 			<view class="grid grid-cols-3 gap-4 mb-6">
 				<function-card icon="solid,bullhorn" color="#3B82F6" text="招生动态"
@@ -60,12 +60,14 @@
 	import TimeLine from '@/components/TimeLine.vue'
 	import NewsCard from '@/components/NewsCard.vue'
 	import RegionComponent from '@/components/RegionComponent.vue'
+	import FontAwesomeIcon from '../../components/FontAwesomeIcon.vue'
 	// 导入工具函数
 	import {
 		navigateTo
 	} from '@/utils/route.js'
 	export default {
 		components: {
+			FontAwesomeIcon,
 			FunctionCard,
 			TimeLine,
 			NewsCard,

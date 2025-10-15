@@ -65,7 +65,7 @@
 		},
 		methods: {
 			handleRegionChange(val) {
-				this.$emit('region-change', val);
+				// this.$emit('region-change', val);
 			}
 		}
 	}

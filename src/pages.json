@@ -1,12 +1,17 @@
 {
-	 "usingComponents": {
-	    "font-awesome-icon": "/components/FontAwsomeIcon.vue"
-	  },
-	"pages": [
-		{
+	"easycom": {
+		// 匹配 components 目录下的所有 vue 文件
+		"^(.*)/(.*)$": "@/components/$1/$2.vue"
+	},
+	"pages": [{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "灯塔"
+				"navigationBarTitleText": "灯塔",
+				"mp-weixin": {
+					"usingComponents": {
+						// "font-awesome-icon": "/components/FontAwesomeIcon"
+					}
+				}
 			}
 		},
 		{

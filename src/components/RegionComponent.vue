@@ -27,7 +27,7 @@
 			}
 		},
 		mounted() {
-			this.initLocation()
+			// this.initLocation()
 		},
 		methods: {
 			async initLocation() {
