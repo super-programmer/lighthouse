@@ -3,7 +3,7 @@
 	<view class="top-nav-container">
 		<view class="bg-white p-4 flex justify-between items-center shadow-md" :class="{ 'fixed-class': isFixed }"
 			:style="isFixed ? fixedStyle : ''">
-			<image src="../static/lighthouseLogo.png" class="w-10 h-10 rounded-full mr-2" @click="$emit('logo-click')"
+			<image src="/static/lighthouseLogo.png" class="w-10 h-10 rounded-full mr-2" @click="$emit('logo-click')"
 				alt="logo" />
 			<view class="flex-1 mx-4">
 				<search-bar placeholder="搜索院校、专业、分数线..." />

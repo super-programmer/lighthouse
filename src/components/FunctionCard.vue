@@ -34,7 +34,6 @@
 		emits: ['click'],
 		computed: {
 			iconArr() {
-				console.log(this.icon.split(','));
 				return this.icon.split(',')
 			}
 		}
