@@ -36,9 +36,10 @@ module.exports = {
 					NODE_ENV: process.env.NODE_ENV || 'development',
 					VUE_APP_DEBUG: process.env.VUE_APP_DEBUG || false,
 					VUE_APP_PLATFORM: process.env.VUE_APP_PLATFORM || 'h5',
-					UNI_MP_PLUGIN_EXPORT: '{}'
+					UNI_MP_PLUGIN_EXPORT: process.env.UNI_MP_PLUGIN_EXPORT || '{}'
 					// 其他需要的环境变量
 				}),
+				// 'process.env.UNI_MP_PLUGIN_EXPORT': '{}',
 				// 确保 process 变量本身被定义（避免直接引用 process 时出错）
 				'process': '{"env": ' + JSON.stringify(process.env) + '}'
 			}]);
@@ -146,6 +147,6 @@ module.exports = {
 			// 	use: 'babel-loader',
 			// 	exclude: /node_modules/
 			// });
-		}
+		};
 	}
 };

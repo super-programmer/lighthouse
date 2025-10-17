@@ -1,6 +1,5 @@
 // src/utils/location.js
 export const getLocation = () => {
-	console.log('getLocation');
 	return new Promise((resolve, reject) => {
 		// 判断是否为H5平台
 		if (process.env.VUE_APP_PLATFORM === 'h5') {
@@ -89,25 +88,41 @@ function nativeGetLocation(resolve, reject) {
 		}
 	});
 };
-// 根据城市名称查找对应地区层级（原方法保留，增加容错）
-export const findRegionByCity = (regionData, cityName) => {
-	// 容错：判断入参是否有效
-	if (!regionData || !Array.isArray(regionData) || !cityName) {
-		console.warn('findRegionByCity 入参无效');
-		return null;
-	}
+/**
+ * 根据城市名称在地区数据中查找完整地区信息
+ * @param {Array} regionData - 地区数据源（格式：[{value: '省', children: [{value: '市', children: [{value: '区'}]}]}]）
+ * @param {String} cityName - 要匹配的城市名称（如 '北京市'、'上海市'）
+ * @returns {Object|null} 匹配到的地区信息 { province, city, district }，未找到则返回 null
+ */
+export function findRegionByCity(regionData, cityName) {
+  if (!regionData || !cityName) return null;
 
-	for (const province of regionData) {
-		if (!province?.children || !Array.isArray(province.children)) continue; // 跳过无效数据
-		for (const city of province.children) {
-			if (city?.text && city.text.includes(cityName)) {
-				return {
-					province: province.text || '',
-					city: city.text || '',
-					district: city.children?.[0]?.text || ''
-				};
-			}
-		}
-	}
-	return null;
-};
+  // 遍历省份
+  for (const provinceObj of regionData) {
+    const province = provinceObj.text;
+	console.log(province,regionData);
+    // 遍历该省下的城市
+    if (provinceObj.children && provinceObj.children.length) {
+      for (const cityObj of provinceObj.children) {
+        const city = cityObj.text;
+        // 城市名称完全匹配（支持模糊匹配可改为 includes）
+        if (city.includes(cityName) || cityName.includes(city)) {
+          // 取第一个区作为默认区（若有）
+		  const countyObj = cityObj.children?.[0] || {};
+          const district = countyObj.text || '';
+          return {
+            province,
+            city,
+            district,
+			provinceObj,
+			cityObj,
+			countyObj
+          };
+        }
+      }
+    }
+  }
+
+  // 未找到匹配的城市
+  return null;
+}
