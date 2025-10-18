@@ -2,6 +2,7 @@
 	"name": "lighthouse",
 	"version": "0.1.0",
 	"private": true,
+	"sideEffects": false,
 	"scripts": {
 		"replaceTailWind": "npx postcss ./dist/out.css --config postcss.config.js -o ./dist/output.css",
 		"buildTailWindcss": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/out.css --minify && npm run replaceTailWind",
@@ -123,7 +124,8 @@
 		"vue-loader": "^15.9.8",
 		"vue-style-loader": "^4.1.3",
 		"vue-template-compiler": ">= 2.6.14 < 2.7",
-		"webpack": "^4.47.0"
+		"webpack": "^4.47.0",
+		"webpack-bundle-analyzer": "^4.10.2"
 	},
 	"browserslist": [
 		"Android >= 4.4",

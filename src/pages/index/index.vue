@@ -23,10 +23,10 @@
 				<view class="flex justify-between items-center mb-4">
 					<text class="text-2xl font-bold text-gray-800">高考时间线</text>
 					<view class="text-blue-500 text-sm" @click="navigateTo('timeline-detail')">
-						查看全部 <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
+						查看全部 <!-- <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
 							:computedStyle="{'display': 'inline-block' , 'verticalAlign': $isH5 ? 'bottom' : 'middle'}"
 							color="#3B82F6"
-							:class="['text-xl','ml-2']" />
+							:class="['text-xl','ml-2']" /> -->
 					</view>
 				</view>
 
@@ -38,10 +38,10 @@
 				<view class="flex justify-between items-center mb-4">
 					<text class="text-2xl font-bold text-gray-800">推荐资讯</text>
 					<view class="text-blue-500 text-sm" @click="navigateTo('news-list')">
-						更多资讯 <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
+						更多资讯 <!-- <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
 							color="#3B82F6"
 							:computedStyle="{'display': 'inline-block' , 'verticalAlign': $isH5 ? 'bottom' : 'middle' }"
-							:class="['text-xl','ml-2']" />
+							:class="['text-xl','ml-2']" /> -->
 					</view>
 				</view>
 				<news-card v-for="(item, index) in recommendedNews" :key="index" :title="item.title"
@@ -169,11 +169,11 @@
 	};
 </script>
 
-<style>
+<style scoped>
 	/* 基础样式优化 */
 	page {
 		font-family: 'Inter', sans-serif;
-		background-color: '#f3f4f6';
+		background-color: #f3f4f6;
 	}
 
 	/* 组件间距优化 */

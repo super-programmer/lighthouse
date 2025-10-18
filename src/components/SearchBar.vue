@@ -9,10 +9,10 @@
         @input="handleInput"
         @confirm="handleSearch"
       />
-      <text class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></text>
+      <text class="fas fa-search absolute left-4 text-gray-400"></text>
       <text 
         v-if="searchText" 
-        class="fas fa-times absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
+        class="fas fa-times absolute right-4 text-gray-400"
         @click="clearSearch"
       ></text>
     </view>

@@ -47,8 +47,17 @@ module.exports = {
 		// 配置全局对象为小程序支持的 this
 		// config.output
 		// .globalObject('this');
+		config.optimization
+			.usedExports(true) // 标记未使用的导出
+			.sideEffects(false) // 假设所有模块无副作用（需确认）
+			.concatenateModules(true);
 		config.optimization.minimizer('terser').use(TerserPlugin, [{
 			terserOptions: {
+				mangle: {
+					toplevel: true, // 混淆顶层变量（小程序环境安全）
+					keep_classnames: false, // 不保留类名（非必要时）
+					keep_fnames: false, // 不保留函数名（非必要时）
+				},
 				output: {
 					// 移除特定代码行
 					preamble: (content) => {
@@ -57,13 +66,22 @@ module.exports = {
 							/__webpack_require__\.b = document\.baseURI \|\| self\.location\.href;/;
 						return content.replace(regex, '');
 					},
-					comments: false // 可选：移除所有注释
+					comments: true // 可选：移除所有注释
 				},
 				// 其他压缩配置保持默认
 				compress: {
-					drop_console: true, // 可选：移除 console
-					drop_debugger: true
-				}
+					drop_console: true,
+					drop_debugger: true,
+					// 新增：移除冗余代码
+					dead_code: true, // 移除死代码
+					unused: true, // 移除未使用的变量/函数
+					collapse_vars: true, // 合并变量
+					reduce_vars: true // 简化变量
+				},
+				parallel: true,
+				toplevel: true,
+				keep_classnames: false, // 不保留类名（非必要时）
+				keep_fnames: false // 不保留函数名（非必要时）
 			}
 		}]);
 
@@ -142,10 +160,27 @@ module.exports = {
 	// 单独指定小程序端的 Webpack 配置
 	configureWebpack: (config) => {
 		if (process.env.UNI_PLATFORM.includes('mp-')) {
-			// config.module.rules.push({
-			// 	test: /\.js$/,
-			// 	use: 'babel-loader',
-			// 	exclude: /node_modules/
+			const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+			// 添加优化配置
+			config.optimization = {
+				...config.optimization, // 保留原有优化配置
+				usedExports: true, // 标记未使用的导出
+				sideEffects: false // 移除副作用代码（需确保代码无未声明的副作用）
+			};
+			config.externals = {
+				'vue-router': 'VueRouter', // 若用 UniApp 路由，可排除
+				'axios': 'axios', // 改用 wx.request 时排除
+				'echarts': 'echarts' // 若用小程序原生图表库，排除 echarts
+			};
+			// 打包时生成体积分析报告
+			config.plugins.push(new BundleAnalyzerPlugin({
+				analyzerMode: 'static', // 生成静态 HTML 报告
+				openAnalyzer: true // 自动打开报告
+			}));
+			// 移除小程序不需要的插件（如 Web 端的样式处理插件）
+			// config.plugins = config.plugins.filter(plugin => {
+			// 	const pluginName = plugin.constructor.name;
+			// 	return !['MiniCssExtractPlugin'].includes(pluginName);
 			// });
 		};
 	}
