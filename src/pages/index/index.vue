@@ -60,7 +60,7 @@
 	import TimeLine from '@/components/TimeLine.vue'
 	import NewsCard from '@/components/NewsCard.vue'
 	import RegionComponent from '@/components/RegionComponent.vue'
-	import FontAwesomeIcon from '../../components/FontAwesomeIcon.vue'
+	import FontAwesomeIcon from '@/components/FontAwesomeIcon.vue'
 	// 导入工具函数
 	import {
 		navigateTo

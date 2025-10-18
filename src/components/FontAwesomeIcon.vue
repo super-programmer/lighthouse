@@ -95,10 +95,6 @@
 			}
 		},
 		methods: {
-			kebabToPascal(str) {
-				const camelCase = str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
-				return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
-			},
 			svgToBase64(svg) {
 				// 保持不变
 				const buffer = new Uint8Array(svg.length);

@@ -11,7 +11,13 @@
 			}
 		}
 	}],
-	"subPackages": [{
+	"subPackages": [
+		// 现有分包...
+		{
+			"root": "components",
+			"pages": []
+		},
+		{
 			"root": "pages/admission-news", // 分包根目录
 			"pages": [{
 				"path": "index", // 相对于分包根目录的路径，实际路径为 pages/admission-news/index

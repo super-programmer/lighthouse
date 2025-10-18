@@ -47,6 +47,7 @@ module.exports = {
 		// 配置全局对象为小程序支持的 this
 		// config.output
 		// .globalObject('this');
+		config.optimization.minimize = true;
 		config.optimization
 			.usedExports(true) // 标记未使用的导出
 			.sideEffects(false) // 假设所有模块无副作用（需确认）
@@ -59,13 +60,13 @@ module.exports = {
 					keep_fnames: false, // 不保留函数名（非必要时）
 				},
 				output: {
-					// 移除特定代码行
-					preamble: (content) => {
-						// 使用正则精确匹配目标代码
-						const regex =
-							/__webpack_require__\.b = document\.baseURI \|\| self\.location\.href;/;
-						return content.replace(regex, '');
-					},
+					// // 移除特定代码行
+					// preamble: (content) => {
+					// 	// 使用正则精确匹配目标代码
+					// 	const regex =
+					// 		/__webpack_require__\.b = document\.baseURI \|\| self\.location\.href;/;
+					// 	return content.replace(regex, '');
+					// },
 					comments: true // 可选：移除所有注释
 				},
 				// 其他压缩配置保持默认
@@ -159,6 +160,15 @@ module.exports = {
 	},
 	// 单独指定小程序端的 Webpack 配置
 	configureWebpack: (config) => {
+		// 开发环境开启压缩
+		if (process.env.NODE_ENV === 'development') {
+			config.optimization.minimize = true; // 开启压缩
+			// config.optimization.minimizer[0].options.terserOptions.compress = {
+			// 	drop_console: false, // 可选：是否移除 console
+			// 	collapse_vars: false,
+			// 	reduce_vars: false
+			// };
+		}
 		if (process.env.UNI_PLATFORM.includes('mp-')) {
 			const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 			// 添加优化配置
