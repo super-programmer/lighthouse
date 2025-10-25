@@ -1,45 +1,81 @@
 {
-	"easycom": {
-		"^(.*)/(.*)$": "@/components/$1/$2.vue"
-	},
-	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": "灯塔",
-			"mp-weixin": {
-				"usingComponents": {}
-			}
-		}
-	}],
-	"subPackages": [
-		// 现有分包...
-		{
-			"root": "components",
-			"pages": []
-		},
-		{
-			"root": "pages/admission-news", // 分包根目录
-			"pages": [{
-				"path": "index", // 相对于分包根目录的路径，实际路径为 pages/admission-news/index
-				"style": {
-					"navigationBarTitleText": "招生动态"
-				}
-			}]
-		},
-		{
-			"root": "pages/application", // 分包根目录
-			"pages": [{
-				"path": "index", // 实际路径为 pages/application/index
-				"style": {
-					"navigationBarTitleText": "志愿填报"
-				}
-			}]
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "灯塔",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "easycom": {
+    "^(.*)/(.*)$": "@/components/$1/$2.vue"
+  },
+  "pages": [{
+    "path": "pages/index/index",
+    "style": {
+      "navigationBarTitleText": "灯塔",
+      "mp-weixin": {
+        "usingComponents": {}
+      }
+    }
+  }],
+  "subPackages": [
+    // 现有分包...
+    {
+      "root": "components",
+      "pages": []
+    },
+    {
+      "root": "pages/admission-news",
+      "pages": [{
+        "path": "index",
+        "style": {
+          "navigationBarTitleText": "招生动态"
+        }
+      }]
+    },
+    {
+      "root": "pages/application",
+      "pages": [{
+        "path": "index",
+        "style": {
+          "navigationBarTitleText": "志愿填报"
+        }
+      }]
+    },
+    // 新增院校库分包
+    {
+      "root": "pages/colleges",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "院校库"
+          }
+        },
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "院校详情"
+          }
+        }
+      ]
+    },
+    // 新增专业库分包
+    {
+      "root": "pages/majors",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "专业库"
+          }
+        },
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "专业详情"
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "灯塔",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
 }

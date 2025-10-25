@@ -1,7 +1,7 @@
 <template>
 	<!-- 外层容器用于占位，避免吸顶时布局跳动 -->
 	<view class="top-nav-container">
-		<view class="bg-white p-4 flex justify-between items-center shadow-md" :class="{ 'fixed-class': isFixed }"
+		<view class="bg-white px-4 py-2 flex justify-between items-center shadow-md" :class="{ 'fixed-class': isFixed }"
 			:style="isFixed ? fixedStyle : ''">
 			<image src="/static/lighthouseLogo.png" class="w-10 h-10 rounded-full mr-2" @click="$emit('logo-click')"
 				alt="logo" />
