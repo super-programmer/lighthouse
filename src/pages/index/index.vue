@@ -12,7 +12,7 @@
 					@click="navigateTo('admission-news')" />
 				<function-card icon="solid,pencilAlt" color="#10B981" text="志愿填报" @click="navigateTo('application')" />
 				<function-card icon="solid,university" color="#8B5CF6" text="院校库" @click="navigateTo('colleges')" />
-				<function-card icon="solid,bookOpen" color="#F59E0B" text="专业库" @click="navigateTo('majors')" />
+				<function-card icon="solid,bookOpen" color="#F59E0B" text="专业库" @click="navigateTo('speciality')" />
 				<function-card icon="solid,lightbulb" color="#EAB308" text="专业解读"
 					@click="navigateTo('major-interpretation')" />
 				<function-card icon="solid,chartLine" color="#EF4444" text="分数管理"

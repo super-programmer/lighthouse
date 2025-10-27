@@ -55,7 +55,7 @@
     },
     // 新增专业库分包
     {
-      "root": "pages/majors",
+      "root": "pages/speciality",
       "pages": [
         {
           "path": "index",
