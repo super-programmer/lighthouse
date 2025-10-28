@@ -6,6 +6,7 @@
         :src="logoUrl" 
         mode="aspectFill" 
         class="w-full h-full rounded-md"
+		lazy-load
         :alt="name + '校徽'"
       ></image>
     </view>
@@ -77,6 +78,11 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  data(){
+	  return {
+		  placeholderImg: '/static/lighthouseLogo.png'
+	  }
   }
 }
 </script>

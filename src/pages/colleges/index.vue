@@ -11,8 +11,8 @@
 			<!-- 院校列表 -->
 			<view v-else class="grid grid-cols-1 gap-4">
 				<college-card v-for="college in colleges" :key="college.schoolId" :logoUrl="college.emblemLink"
-					:name="college.schoolName" :level="getLevelText(college.educationLevel)" :authority="college.governingBody"
-					:location="college.location" />
+					:name="college.schoolName" :level="getLevelText(college.educationLevel)"
+					:authority="college.governingBody" :location="college.location" />
 			</view>
 		</view>
 
@@ -74,6 +74,10 @@
 				activeFilter: 'all', // 当前激活的筛选条件
 				colleges: [], // 院校列表数据
 				loading: false, // 加载状态
+				// 分页参数
+				page: 1,
+				limit: 10,
+				hasMore: true,
 				keyword: '' // 搜索关键词
 			}
 		},
@@ -82,9 +86,21 @@
 			// 页面加载时获取院校数据
 			this.getCollegeList()
 		},
+		onPullDownRefresh() {
+			// 下拉刷新
+			this.page = 1
+			this.getCollegeList(true).then(() => {
+				uni.stopPullDownRefresh()
+			})
+		},
+		onReachBottom() {
+			// 滚动到底部自动加载更多
+			if (!this.loading && this.hasMore) {
+				this.loadMore()
+			}
+		},
 		methods: {
 			navigateTo,
-
 			// 获取院校列表数据
 			async getCollegeList() {
 				try {
@@ -109,6 +125,31 @@
 				} catch (error) {
 					console.error('请求院校接口出错:', error)
 					this.colleges = []
+				} finally {
+					this.loading = false
+				}
+			},
+			// 加载更多
+			async loadMore() {
+				if (this.loading || !this.hasMore) return
+				this.loading = true
+				this.page += 1
+				try {
+					const res = await getCollegesByPage(
+						this.page,
+						this.limit,
+						this.keyword
+					)
+			
+					const newColleges = res.data
+					this.colleges = [...this.colleges, ...newColleges]
+					this.hasMore = newColleges.length >= this.limit
+				} catch (error) {
+					console.error('加载更多院校失败:', error)
+					uni.showToast({
+						title: '加载失败',
+						icon: 'none'
+					})
 				} finally {
 					this.loading = false
 				}

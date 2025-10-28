@@ -1,5 +1,5 @@
 // 基础API配置
-export const BASE_URL = 'http://localhost:3000/api';
+export const BASE_URL = 'http://115.190.7.223:3001/api';
 
 // 请求工具函数
 export const request = (url, method = 'GET', data = {}) => {
