@@ -82,7 +82,6 @@
 			}
 		},
 		onShow() {
-			console.log('院校库页面加载')
 			// 页面加载时获取院校数据
 			this.getCollegeList()
 		},
@@ -95,7 +94,7 @@
 		},
 		onReachBottom() {
 			// 滚动到底部自动加载更多
-			if (!this.loading && this.hasMore) {
+			if (!this.loading && this.hasMore && !this.keyword) {
 				this.loadMore()
 			}
 		},

@@ -1,7 +1,7 @@
 <template>
 	<view class="min-h-screen bg-gray-100">
 		<!-- 顶部导航 -->
-		<top-nav @search="handleSearch" />
+		<top-nav @handleSearch="handleSearch" />
 
 		<!-- 专业列表 -->
 		<view class="container mx-auto px-4 py-4">
@@ -90,7 +90,6 @@
 			}
 		},
 		onLoad() {
-			console.log('专业库页面加载')
 			this.getSpecialityList()
 		},
 		onPullDownRefresh() {
@@ -102,7 +101,7 @@
 		},
 		onReachBottom() {
 			// 滚动到底部自动加载更多
-			if (!this.loading && this.hasMore) {
+			if (!this.loading && this.hasMore && !this.keyword) {
 				this.loadMore()
 			}
 		},
@@ -164,7 +163,6 @@
 					return categoryMatch && keywordMatch
 				})
 			},
-
 			// 加载更多
 			async loadMore() {
 				if (this.loading || !this.hasMore) return

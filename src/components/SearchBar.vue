@@ -32,10 +32,7 @@ export default {
       this.$emit('input', this.searchText)
     },
     handleSearch() {
-      // 确认搜索时触发
-      if (this.searchText.trim()) {
         this.$emit('search', this.searchText.trim())
-      }
     },
     clearSearch() {
       // 清空搜索内容
