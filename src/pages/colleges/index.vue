@@ -1,7 +1,7 @@
 <template>
 	<view class="min-h-screen bg-gray-100">
 		<!-- 顶部导航 -->
-		<top-nav />
+		<top-nav @handleSearch="handleSearch" />
 		<!-- 院校列表 -->
 		<view class="container mx-auto px-4 py-4">
 			<!-- 加载状态 -->
@@ -101,6 +101,12 @@
 		},
 		methods: {
 			navigateTo,
+			handleSearch(keyword) {
+				// 搜索时重置分页
+				this.keyword = keyword
+				this.page = 1
+				this.getCollegeList()
+			},
 			// 获取院校列表数据
 			async getCollegeList() {
 				try {
@@ -140,7 +146,7 @@
 						this.limit,
 						this.keyword
 					)
-			
+
 					const newColleges = res.data
 					this.colleges = [...this.colleges, ...newColleges]
 					this.hasMore = newColleges.length >= this.limit
@@ -154,14 +160,6 @@
 					this.loading = false
 				}
 			},
-			// 处理搜索
-			handleSearch(keyword) {
-				console.log('搜索院校:', keyword)
-				this.keyword = keyword
-				// 搜索时重新获取数据
-				this.getCollegeList()
-			},
-
 			// 处理筛选
 			handleFilter(filter) {
 				console.log('筛选条件:', filter)

@@ -9,7 +9,8 @@ import {
   faBookOpen,
   faLightbulb,
   faChartLine,
-  faAngleRight
+  faAngleRight,
+  faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 // 注册图标
@@ -21,6 +22,7 @@ library.add(
   faBookOpen,
   faLightbulb,
   faChartLine,
-  faAngleRight
+  faAngleRight,
+  faMapMarkerAlt
 )
 

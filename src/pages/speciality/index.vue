@@ -96,7 +96,7 @@
 		onPullDownRefresh() {
 			// 下拉刷新
 			this.page = 1
-			this.getCollegeList(true).then(() => {
+			this.getSpecialityList(true).then(() => {
 				uni.stopPullDownRefresh()
 			})
 		},
@@ -112,6 +112,12 @@
 				this.activeCategory = category
 				this.page = 1
 				this.filteredSpeciality = this.filterSpeciality()
+			},
+			handleSearch(keyword) {
+				// 搜索时重置分页
+				this.keyword = keyword
+				this.page = 1
+				this.getSpecialityList()
 			},
 			async getSpecialityList() {
 				try {
@@ -140,13 +146,6 @@
 					this.loading = false
 				}
 			},
-			// 处理搜索
-			handleSearch(keyword) {
-				this.keyword = keyword.trim()
-				this.page = 1
-				this.filteredSpeciality = this.filterSpeciality()
-			},
-
 			// 筛选专业
 			filterSpeciality() {
 				return this.allSpeciality.filter(major => {

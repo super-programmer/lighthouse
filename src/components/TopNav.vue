@@ -6,7 +6,7 @@
 			<image src="/static/lighthouseLogo.png" class="w-10 h-10 rounded-full mr-2" @click="$emit('logo-click')"
 				alt="logo" />
 			<view class="flex-1 mx-2">
-				<search-bar placeholder="搜索院校、专业、分数线..." />
+				<search-bar placeholder="搜索院校、专业、分数线..."  @search="handleSearch"/>
 			</view>
 			<region-component class="text-gray-600" @change="handleRegionChange" />
 		</view>
@@ -66,6 +66,9 @@
 		methods: {
 			handleRegionChange(val) {
 				// this.$emit('region-change', val);
+			},
+			handleSearch(keyword){
+				this.$emit('handleSearch',keyword)
 			}
 		}
 	}

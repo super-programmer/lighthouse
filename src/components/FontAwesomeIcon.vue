@@ -24,7 +24,8 @@
 		faBookOpen,
 		faLightbulb,
 		faChartLine,
-		faAngleRight
+		faAngleRight,
+		faMapMarkerAlt
 	} from '@fortawesome/free-solid-svg-icons'
 
 	export default {
@@ -69,7 +70,8 @@
 					'solid,bookOpen': faBookOpen,
 					'solid,lightbulb': faLightbulb,
 					'solid,chartLine': faChartLine,
-					'solid,angleRight': faAngleRight
+					'solid,angleRight': faAngleRight,
+					'solid,mapMarkerAlt':faMapMarkerAlt
 				}
 			}
 		},

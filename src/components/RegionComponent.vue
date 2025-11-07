@@ -2,18 +2,21 @@
 	<view class="region-picker">
 		<!-- 外层容器：整合图标和选择器 -->
 		<view class="picker-container">
-			<!-- 定位图标：仅在未选择地址时显示 -->
-			<font-awesome-icon v-if="!hasSelectedRegion" :icon="['solid', 'map-marker-alt']" size="16" color="#3B82F6"
-				@click="openPicker" class="location-icon" />
-			<view class="selected-city" v-else @click="openPicker">
-				{{ displayText }}
-			</view>
-
 			<!-- 隐藏原生选择器的显示部分，仅保留弹出功能 -->
 			<uni-data-picker ref="regionPicker" class="region-selector" @change="onRegionChange" :localdata="regionData"
 				mode="region" :value="selectedRegion" :clear-icon="false" :placeholder="placeholderText"
 				popup-title="选择地区" />
+			<view @click="openPicker">
+				<!-- 定位图标：仅在未选择地址时显示 -->
+				<font-awesome-icon v-if="!hasSelectedRegion" :icon="['solid', 'mapMarkerAlt']" size="16" color="#3B82F6"
+					class="location-icon" />
+				<view class="selected-city" v-else>
+					{{ displayText }}
+				</view>
+			</view>
+
 		</view>
+
 	</view>
 </template>
 
@@ -160,6 +163,7 @@
 
 	/* 选择器样式 */
 	.region-selector {
+		height: 0;
 		width: 0 !important;
 		border: none !important;
 		overflow: hidden;
