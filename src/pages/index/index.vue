@@ -23,7 +23,7 @@
 			<view class="bg-white p-6 rounded-lg shadow-md mb-6 mt-6">
 				<view class="flex justify-between items-center mb-4">
 					<text class="text-2xl font-bold text-gray-800">高考时间线</text>
-					<view class="text-blue-500 text-sm" @click="navigateTo('timeline-detail')">
+					<view class="text-blue-500 text-sm" @click="navigateTo('timelines')">
 						查看全部 <!-- <font-awesome-icon :icon="['solid', 'angle-double-right']" size="18"
 							:computedStyle="{'display': 'inline-block' , 'verticalAlign': $isH5 ? 'bottom' : 'middle'}"
 							color="#3B82F6"
@@ -78,23 +78,19 @@
 		data() {
 			return {
 				scrollTop: 0,
-				// 时间线数据
 				timelineEvents: [{
-						title: '高考报名时间',
-						time: '2023年11月1日-10日',
-						status: 'upcoming'
-					},
-					{
-						title: '高考考试时间',
-						time: '2024年6月7日-9日',
-						status: 'upcoming'
-					},
-					{
-						title: '高考成绩查询时间',
-						time: '2024年6月25日左右',
-						status: 'upcoming'
-					}
-				],
+					title: '高考报名时间',
+					time: '2024年11月1日-30日',
+					status: 'upcoming'
+				}, {
+					title: '高考考试时间',
+					time: '2025年6月7日-10日',
+					status: 'upcoming'
+				}, {
+					title: '高考成绩查询时间',
+					time: '2025年6月25日左右',
+					status: 'upcoming'
+				}],
 				// 推荐资讯数据
 				recommendedNews: [{
 						id: 1,
@@ -123,28 +119,6 @@
 				console.log('加载首页数据')
 			},
 			navigateTo,
-			// // 导航到指定页面（UniApp方式）
-			// navigateTo(page, params = {}) {
-			// 	console.log(page, 'page');
-			// 	// 拼接参数
-			// 	let url = `${page}`
-			// 	const queryParams = Object.entries(params)
-			// 		.map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-			// 		.join('&')
-
-			// 	if (queryParams) {
-			// 		url += `?${queryParams}`
-			// 	}
-
-			// 	console.log(url, 'url');
-			// 	// 使用UniApp导航API
-			// 	uni.navigateTo({
-			// 		url,
-			// 		fail: (err) => {
-			// 			console.error('导航失败:', err)
-			// 		}
-			// 	})
-			// },
 			// 处理地区选择变化
 			handleRegionChange(region) {
 				console.log('地区变化:', region)

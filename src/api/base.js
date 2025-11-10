@@ -1,6 +1,6 @@
 // 基础API配置
-// export const BASE_URL = 'https://super.lighthousegroup.xyz/api';
-export const BASE_URL = 'https://115.190.7.223/api';
+export const BASE_URL = 'https://super.lighthousegroup.xyz/api';
+// export const BASE_URL = 'https://115.190.7.223/api';
 
 // 请求工具函数
 export const request = (url, method = 'GET', data = {}) => {

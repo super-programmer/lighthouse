@@ -35,6 +35,15 @@
 				}
 			}]
 		},
+		{
+			"root": "pages/timelines",
+			"pages": [{
+				"path": "index",
+				"style": {
+					"navigationBarTitleText": "高考时间详情"
+				}
+			}]
+		},
 		// 新增院校库分包
 		{
 			"root": "pages/colleges",
